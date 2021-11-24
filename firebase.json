@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "build",
+    "site": "medianova-fmv-jeux-videos",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
