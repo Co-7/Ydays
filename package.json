@@ -44,9 +44,9 @@
     ]
   },
   "devDependencies": {
-    "electron": "^17.0.0",
+    "electron": "^16.0.4",
     "electron-packager": "^15.4.0",
     "foreman": "^3.0.1",
-    "sass": "^1.49.7"
+    "sass": "^1.43.4"
   }
 }
