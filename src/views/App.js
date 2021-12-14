@@ -1,9 +1,12 @@
-import Navbar from '../components/Navbar'
+import './App.scss';
+import Navbar from './components/Navbar'
+import Backoffice from './views/Backoffice'
 
 function App() {
   return (
     <div className="App">
-        <Navbar />
+        <Navbar></Navbar>
+        <Backoffice></Backoffice>
     </div>
   );
 }
