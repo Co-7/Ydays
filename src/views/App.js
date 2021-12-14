@@ -1,6 +1,5 @@
-import './App.scss';
-import Navbar from './components/Navbar'
-import Backoffice from './views/Backoffice'
+import Navbar from '../components/Navbar'
+import Backoffice from '../views/Backoffice'
 
 function App() {
   return (
