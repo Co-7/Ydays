@@ -1,5 +1,5 @@
 import Navbar from '../components/Navbar'
-import Backoffice from '../views/Backoffice'
+import Backoffice from './Backoffice'
 
 function App() {
   return (
