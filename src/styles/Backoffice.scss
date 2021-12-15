@@ -3,30 +3,28 @@
     align-items: center;
     flex-direction: column;
 
-    #start_node {
-        width: 40px;
-        height: 40px;
-        border: 2px solid #C4C4C4;
-        border-radius: 50px;
-        background-color: transparent;
+    .p {
+        min-width: 400px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
+        flex-direction: column;
 
-        &::before {
-            content: '';
-            background-color: #C4C4C4;
-            width: 10px;
-            height: 10px;
-            border-radius: 50px;
+        .btn_create {
+            background-color: #3d61a4;
+            border-radius: 6px;
+            padding: 8px 12px;
+            text-align: center;
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .btn_back {
+            margin: 10px auto 0 auto;
+            color: white;
+            text-decoration: none;
         }
     }
+}
 
-    .line {
-        display: block;
-        background-color: #C4C4C4;
-        width: 2px;
-        height: 36px;
-    }
+.list_project {
+    display: flex;
 }
