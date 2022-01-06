@@ -57,7 +57,7 @@ function Create() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: title, author: author }),
     };
-    fetch("https://ptsv2.com/t/5caea-1639565749/post", requestOptions).then((response) => response.json());
+    fetch("https://ptsv2.com/t/6hf0w-1641463773/post", requestOptions).then((response) => response.json());
   }
 
   return (
@@ -91,7 +91,7 @@ function Update() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: title, author: author }),
       };
-      fetch("https://ptsv2.com/t/5caea-1639565749/post", requestOptions).then((response) => response.json());
+      fetch("https://ptsv2.com/t/6hf0w-1641463773/post", requestOptions).then((response) => response.json());
     }
 
     const js = JSON.parse(`{"id":"1","title":"Film A","author":"John Doe","date_creation":"2021-01-15T16:00:00.000Z"}`);
@@ -120,15 +120,24 @@ function Update() {
 function Project() {
   let { id } = useParams();
 
-//   useEffect(() => {
-//     // POST request using fetch inside useEffect React hook
-//     const requestOptions = {
-//       method: "GET",
-//     };
-//     fetch("https://reqres.in/api/1/movie?" + id, requestOptions).then((response) => response.json());
-//   }, []);
+  // ? Pour recuperer les datas du projet via l'api
+  // useEffect(() => {
+  //   // POST request using fetch inside useEffect React hook
+  //   const requestOptions = {
+  //     method: "GET",
+  //   };
+  //   fetch("https://reqres.in/api/1/movie?" + id, requestOptions).then((response) => response.json());
+  // }, []);
 
-  const js = JSON.parse(`{"id":"1","title":"Film A","author":"John Doe","date_creation":"2021-01-15T16:00:00.000Z"}`);
+  const js = `[{"id":1,"parent_id":[-1],"child_id":[{"id":2,"choice":"Reponse 1"},{"id":3,"choice":"Reponse 2"}],"question":"Question A","status":"true","clip_url":"youtube.com"},{"id":2,"parent_id":[1],"child_id":[{"id":4,"choice":"Reponse 1"},{"id":5,"choice":"Reponse 2"}],"question":"Question A","status":"true","clip_url":"youtube.com"},{"id":3,"parent_id":[1],"child_id":[{"id":4,"choice":""}],"question":"Question A","status":"false","clip_url":"youtube.com"}]`;
 
-  return <p>{js.id}</p>;
+  return (
+    <div className="fff">
+      <div className="list_project">
+        {JSON.parse(js).map((element) => {
+          return <Scene id={element.id} clip_url={element.clip_url} status={element.status}></Scene>;
+        })}
+      </div>
+    </div>
+  );
 }
