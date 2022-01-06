@@ -27,4 +27,26 @@
 
 .list_project {
     display: flex;
+    flex-direction: column;
+    padding: 0px 50px;
+
+    .project {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        background: rgb(181, 123, 123);
+        margin: 0 0 20px 0;
+
+        &.start, &.end {
+            margin: auto;
+        }
+
+        &.false {
+            margin-left: auto;
+        }
+
+        &.true {
+            margin-right: auto;
+        }
+    }
 }

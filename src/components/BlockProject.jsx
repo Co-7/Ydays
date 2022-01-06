@@ -4,10 +4,13 @@ import "../styles/BlockProject.scss";
 
 function Backoffice(props) {
   return (
-    <Link className="block_project" to={`/project/${props.id}`}>
-      <span className="title">{props.title}</span>
-      <span className="author">{props.author}</span>
-    </Link>
+    <div>
+      <Link className="block_project" to={`/project/${props.id}`}>
+        <span className="title">{props.title}</span>
+        <span className="author">{props.author}</span>
+      </Link>
+      <Link to={`/update/${props.id}`}>update</Link>
+    </div>
   );
 }
 
