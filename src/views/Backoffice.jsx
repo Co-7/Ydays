@@ -116,6 +116,7 @@ function Update() {
       </div>
     );
   }
+  
 
 function Project() {
   let { id } = useParams();
@@ -129,15 +130,24 @@ function Project() {
   //   fetch("https://reqres.in/api/1/movie?" + id, requestOptions).then((response) => response.json());
   // }, []);
 
+  const [SceneList, setSceneList] = useState([]);
+
+  const addChild = () => {
+    setSceneList(SceneList.concat(<Scene/>));
+  }
+
   const js = `[{"id":1,"parent_id":[-1],"child_id":[{"id":2,"choice":"Reponse 1"},{"id":3,"choice":"Reponse 2"}],"question":"Question A","status":"true","clip_url":"youtube.com"},{"id":2,"parent_id":[1],"child_id":[{"id":4,"choice":"Reponse 1"},{"id":5,"choice":"Reponse 2"}],"question":"Question A","status":"true","clip_url":"youtube.com"},{"id":3,"parent_id":[1],"child_id":[{"id":4,"choice":""}],"question":"Question A","status":"false","clip_url":"youtube.com"}]`;
 
   return (
-    <div className="fff">
-      <div className="list_project">
+    <div>
+      <div className="list_scene">
         {JSON.parse(js).map((element) => {
           return <Scene id={element.id} clip_url={element.clip_url} status={element.status}></Scene>;
         })}
+        {SceneList}
+        <div id="add_scene" onClick={addChild}>+</div>
       </div>
+      <span id="save_button">Sauvegarder</span>
     </div>
   );
 }
