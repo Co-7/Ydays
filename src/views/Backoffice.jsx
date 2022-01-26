@@ -10,9 +10,9 @@ export default function Backoffice() {
       <div>
         <Routes>
           <Route element={<Home />} path="/"></Route>
-          <Route path="/create" element={<Create />}></Route>
+          <Route path="/project/create" element={<Create />}></Route>
           <Route path="/project/:id" element={<Project />}></Route>
-          <Route path="/update/:id" element={<Update />}></Route>
+          <Route path="/project/update/:id" element={<Update />}></Route>
         </Routes>
       </div>
     </Router>
@@ -20,44 +20,51 @@ export default function Backoffice() {
 }
 
 function Home() {
-  //   useEffect(() => {
-  //     // POST request using fetch inside useEffect React hook
-  //     const requestOptions = {
-  //       method: "GET",
-  //       body: JSON.stringify({ title: "React Hooks POST Request Example" }),
-  //     };
-  //     fetch("https://reqres.in/api/posts", requestOptions).then((response) => response.json());
+  const [movies, setMovies] = useState([]);
 
-  //     // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  //   }, []);
-  const js = `[{"id":"1","title":"Film A","author":"John Doe","date_creation":"2021-01-15T16:00:00.000Z"},{"id":"2","title":"Film A","author":"John Doe","date_creation":"2021-01-15T16:00:00.000Z"},{"id":"3","title":"Film A","author":"John Doe","date_creation":"2021-01-15T16:00:00.000Z"}]`;
+  useEffect(() => {
+    const requestOptions = {
+      method: "GET",
+    };
+    fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions).then(function (response) {
+      console.log(response.blob())
+      setMovies(response.data)
+    });
+  }, []);
 
   return (
     <div>
       <div className="list_project">
-        {JSON.parse(js).map((element) => {
+        {/* {JSON.parse(movies).map((element) => {
           return <BlockProject title={element.title} author={element.author} id={element.id}></BlockProject>;
-        })}
-        <Link className="block_project _add" to="/create">
+        })} */}
+        <Link className="block_project _add" to="/project/create">
           +
         </Link>
       </div>
     </div>
   );
 }
- 
+
 function Create() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
 
   function createMovie(e) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    // myHeaders.append("Access-Control-Allow-Methods", "POST, GET");
+    // myHeaders.append("Access-Control-Allow-Headers", "Content-Type");
+    // myHeaders.append("Access-Control-Max-Age", "86400");
     const requestOptions = {
       method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
+      headers: myHeaders,
       body: JSON.stringify({ title: title, author: author }),
     };
-    fetch("https://ptsv2.com/t/6hf0w-1641463773/post", requestOptions).then((response) => response.json());
+
+    fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions).then((response) => response.json());
+
   }
 
   return (
@@ -81,60 +88,65 @@ function Create() {
 }
 
 function Update() {
-    const [title, setTitle] = useState("");
-    const [author, setAuthor] = useState("");
-  
-    function updateMovie(e) {
-      const requestOptions = {
-        method: "PUT",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: title, author: author }),
-      };
-      fetch("https://ptsv2.com/t/6hf0w-1641463773/post", requestOptions).then((response) => response.json());
-    }
 
-    const js = JSON.parse(`{"id":"1","title":"Film A","author":"John Doe","date_creation":"2021-01-15T16:00:00.000Z"}`);
-  
-    return (
-      <div id="backoffice">
-          <h2>Mise a jour des informations du projet</h2>
-        <div i className="p">
-          <label>Titre du film :</label>
-          <input placeholder="James Bond" type="text" value={js.title} onChange={(e) => setTitle(e.target.value)} />
-  
-          <label>Nom de l'auteur :</label>
-          <input placeholder="Paul Richard" type="text" value={js.author} onChange={(e) => setAuthor(e.target.value)} />
-  
-          <span onClick={updateMovie} className="btn_create">
-            Mettre à jour le Projet
-          </span>
-          <Link className="btn_back" to="/">
-            Retour
-          </Link>
-        </div>
-      </div>
-    );
+  let { id } = useParams();
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  var film = "";
+
+  const requestOptionsGet = {
+    method: "GET",
+  };
+  fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptionsGet).then((response) => {
+    film = response.text();
+    console.log(film);
+  });
+
+  console.log(film);
+
+  function updateMovie(e) {
+    console.log(e);
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: title, author: author }),
+    };
+    fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptions).then((response) => (window.location.href = "/"));
   }
   
+
+  return (
+    <div id="backoffice">
+      <h2>Mise a jour des informations du projet</h2>
+      <div i className="p">
+        <label>Titre du film :</label>
+        <input placeholder="James Bond" type="text" onChange={(e) => setTitle(e.target.value)} />
+
+        <label>Nom de l'auteur :</label>
+        <input placeholder="Paul Richard" type="text" onChange={(e) => setAuthor(e.target.value)} />
+
+        <span onClick={updateMovie} className="btn_create">
+          Mettre à jour le Projet
+        </span>
+        <Link className="btn_back" to="/">
+          Retour
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 function Project() {
   let { id } = useParams();
 
-  // ? Pour recuperer les datas du projet via l'api
-  // useEffect(() => {
-  //   // POST request using fetch inside useEffect React hook
-  //   const requestOptions = {
-  //     method: "GET",
-  //   };
-  //   fetch("https://reqres.in/api/1/movie?" + id, requestOptions).then((response) => response.json());
-  // }, []);
 
-  const [SceneList, setSceneList] = useState([]);
-
-  const addChild = () => {
-    setSceneList(SceneList.concat(<Scene/>));
-  }
+  //   useEffect(() => {
+  //     // POST request using fetch inside useEffect React hook
+  //     const requestOptions = {
+  //       method: "GET",
+  //     };
+  //     fetch("https://reqres.in/api/1/movie?" + id, requestOptions).then((response) => response.json());
+  //   }, []);
 
   const js = `[{"id":1,"parent_id":[-1],"child_id":[{"id":2,"choice":"Reponse 1"},{"id":3,"choice":"Reponse 2"}],"question":"Question A","status":"true","clip_url":"youtube.com"},{"id":2,"parent_id":[1],"child_id":[{"id":4,"choice":"Reponse 1"},{"id":5,"choice":"Reponse 2"}],"question":"Question A","status":"true","clip_url":"youtube.com"},{"id":3,"parent_id":[1],"child_id":[{"id":4,"choice":""}],"question":"Question A","status":"false","clip_url":"youtube.com"}]`;
 
