@@ -41,7 +41,7 @@ function Home() {
     <div>
       <div className="list_project">
         {movies.map((element) => {
-          return <BlockProject title={element.title} author={element.author} id={element.id}></BlockProject>;
+          return <BlockProject key={element.id} title={element.title} author={element.author} id={element.id}></BlockProject>;
         })}
         <Link className="block_project _add" to="/project/create">
           +
@@ -108,7 +108,7 @@ function Update() {
         setTitle(json.title);
         setAuthor(json.author);
       });
-  }, []);
+  }, [id]);
 
   function updateMovie(e) {
     console.log(e);
@@ -153,26 +153,57 @@ function Delete() {
 
 function Project() {
   let { id } = useParams();
+  const [scenes, setScenes] = useState([]);
+  const [lastId, setLastId] = useState(0);
 
-  //   useEffect(() => {
-  //     // POST request using fetch inside useEffect React hook
-  //     const requestOptions = {
-  //       method: "GET",
-  //     };
-  //     fetch("https://reqres.in/api/1/movie?" + id, requestOptions).then((response) => response.json());
-  //   }, []);
+  useEffect(() => {
+    const requestOptions = {
+      method: "GET",
+    };
+    fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptions)
+      .then(function (a) {
+        return a.json(); // call the json method on the response to get JSON
+      })
+      .then(function (json) {
+        setScenes(json.videos)
+        setLastId(json.videos[json.videos.length-1].id + 1)
+      });
+  }, [id]);
 
-  const js = `[{"id":1,"parent_id":[-1],"child_id":[{"id":2,"choice":"Reponse 1"},{"id":3,"choice":"Reponse 2"}],"question":"Question A","status":"true","clip_url":"youtube.com"},{"id":2,"parent_id":[1],"child_id":[{"id":4,"choice":"Reponse 1"},{"id":5,"choice":"Reponse 2"}],"question":"Question A","status":"true","clip_url":"youtube.com"},{"id":3,"parent_id":[1],"child_id":[{"id":4,"choice":""}],"question":"Question A","status":"false","clip_url":"youtube.com"}]`;
+  function addChild() {
+
+    let newArr = [...scenes]
+    newArr.push({
+      id: lastId,
+      name: "string",
+      question: "string",
+      choices: [
+        "string", "dd"
+      ],
+      parentId: [
+        -1
+      ],
+      childId: [
+        0, 1
+      ],
+      status: "string",
+      url: "string",
+      movie: "string",
+      create: true
+    })
+
+    setScenes(newArr)
+    setLastId(lastId+1)
+  }
 
   return (
     <div>
       <div className="list_scene">
-        {JSON.parse(js).map((element) => {
-          return <Scene id={element.id} clip_url={element.clip_url} status={element.status}></Scene>;
+        {scenes.map((element) => {
+          return <Scene idMovie={id} create={element.create} key={element.id} id={element.id} name={element.name} childTwo={element.childId[1]} choiceTwo={element.choices[1]} childOne={element.childId[0]} choiceOne={element.choices[0]} question={element.question} clip_url={element.url} status={element.status}></Scene>;
         })}
-        {/* <div id="add_scene" onClick={addChild}>+</div> */}
+        <div id="add_scene" onClick={addChild}>+</div>
       </div>
-      <span id="save_button">Sauvegarder</span>
     </div>
   );
 }
