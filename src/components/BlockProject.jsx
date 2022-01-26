@@ -9,7 +9,9 @@ function Backoffice(props) {
         <span className="title">{props.title}</span>
         <span className="author">{props.author}</span>
       </Link>
-      <Link to={`/update/${props.id}`}>update</Link>
+      <Link className="update_project" to={`/project/update/${props.id}`}>
+        Update
+      </Link>
     </div>
   );
 }
