@@ -95,17 +95,20 @@ function Update() {
   let { id } = useParams();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  var film = "";
 
-  const requestOptionsGet = {
-    method: "GET",
-  };
-  fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptionsGet).then((response) => {
-    film = response.text();
-    console.log(film);
-  });
-
-  console.log(film);
+  useEffect(() => {
+    const requestOptions = {
+      method: "GET",
+    };
+    fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptions)
+      .then(function (a) {
+        return a.json(); // call the json method on the response to get JSON
+      })
+      .then(function (json) {
+        setTitle(json.title);
+        setAuthor(json.author);
+      });
+  }, []);
 
   function updateMovie(e) {
     console.log(e);
@@ -122,10 +125,10 @@ function Update() {
       <h2>Mise a jour des informations du projet</h2>
       <div i className="p">
         <label>Titre du film :</label>
-        <input placeholder="James Bond" type="text" onChange={(e) => setTitle(e.target.value)} />
+        <input placeholder="James Bond" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <label>Nom de l'auteur :</label>
-        <input placeholder="Paul Richard" type="text" onChange={(e) => setAuthor(e.target.value)} />
+        <input placeholder="Paul Richard" type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
 
         <span onClick={updateMovie} className="btn_create">
           Mettre à jour le Projet
