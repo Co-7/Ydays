@@ -68,7 +68,7 @@ function Create() {
       body: JSON.stringify({ title: title, author: author }),
     };
 
-    fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions).then((response) => response.json());
+    fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions).then((response) => (window.location.href = "/"));
   }
 
   return (
