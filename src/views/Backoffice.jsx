@@ -156,8 +156,7 @@ function Project() {
         {JSON.parse(js).map((element) => {
           return <Scene id={element.id} clip_url={element.clip_url} status={element.status}></Scene>;
         })}
-        {SceneList}
-        <div id="add_scene" onClick={addChild}>+</div>
+        {/* <div id="add_scene" onClick={addChild}>+</div> */}
       </div>
       <span id="save_button">Sauvegarder</span>
     </div>
