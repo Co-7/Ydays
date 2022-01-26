@@ -13,6 +13,7 @@ export default function Backoffice() {
           <Route path="/project/create" element={<Create />}></Route>
           <Route path="/project/:id" element={<Project />}></Route>
           <Route path="/project/update/:id" element={<Update />}></Route>
+          <Route path="/project/delete/:id" element={<Delete />}></Route>
         </Routes>
       </div>
     </Router>
@@ -26,18 +27,22 @@ function Home() {
     const requestOptions = {
       method: "GET",
     };
-    fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions).then(function (response) {
-      console.log(response.blob())
-      setMovies(response.data)
-    });
+    fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions)
+      .then(function (a) {
+        return a.json(); // call the json method on the response to get JSON
+      })
+      .then(function (json) {
+        console.log(json["hydra:member"]);
+        setMovies(json["hydra:member"]);
+      });
   }, []);
 
   return (
     <div>
       <div className="list_project">
-        {/* {JSON.parse(movies).map((element) => {
+        {movies.map((element) => {
           return <BlockProject title={element.title} author={element.author} id={element.id}></BlockProject>;
-        })} */}
+        })}
         <Link className="block_project _add" to="/project/create">
           +
         </Link>
@@ -64,7 +69,6 @@ function Create() {
     };
 
     fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions).then((response) => response.json());
-
   }
 
   return (
@@ -88,7 +92,6 @@ function Create() {
 }
 
 function Update() {
-
   let { id } = useParams();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -113,7 +116,6 @@ function Update() {
     };
     fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptions).then((response) => (window.location.href = "/"));
   }
-  
 
   return (
     <div id="backoffice">
@@ -136,9 +138,18 @@ function Update() {
   );
 }
 
-function Project() {
+function Delete() {
   let { id } = useParams();
 
+  const requestOptions = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  };
+  fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptions).then((response) => (window.location.href = "/"));
+}
+
+function Project() {
+  let { id } = useParams();
 
   //   useEffect(() => {
   //     // POST request using fetch inside useEffect React hook
