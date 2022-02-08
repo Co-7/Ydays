@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import http from "../../../utils/http-common";
 import {Link, useParams} from "react-router-dom";
 
 function MovieUpdate() {
@@ -7,10 +8,7 @@ function MovieUpdate() {
     const [author, setAuthor] = useState("");
 
     useEffect(() => {
-        const requestOptions = {
-            method: "GET",
-        };
-        fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptions)
+        http.get(`/movies/${id}`)
             .then(function (a) {
                 return a.json(); // call the json method on the response to get JSON
             })
@@ -21,13 +19,15 @@ function MovieUpdate() {
     }, [id]);
 
     function updateMovie(e) {
-        console.log(e);
-        const requestOptions = {
-            method: "PUT",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({title: title, author: author}),
-        };
-        fetch("https://api.fmv.medianova.xyz/api/movies/" + id, requestOptions).then((response) => (window.location.href = "/"));
+        e.preventDefault();
+
+        const json = {
+            title: title,
+            author: author
+        }
+
+        http.put(`/movies/${id}`, json)
+            .then((response) => (window.location.href = "/"));
     }
 
     return (

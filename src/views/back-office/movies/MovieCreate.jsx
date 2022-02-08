@@ -1,24 +1,18 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
+import http from "../../../utils/http-common";
 
 function MovieCreate() {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
 
     function createMovie(e) {
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Access-Control-Allow-Origin", "*");
-        // myHeaders.append("Access-Control-Allow-Methods", "POST, GET");
-        // myHeaders.append("Access-Control-Allow-Headers", "Content-Type");
-        // myHeaders.append("Access-Control-Max-Age", "86400");
-        const requestOptions = {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify({ title: title, author: author }),
-        };
-
-        fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions).then((response) => (window.location.href = "/"));
+        const json = {
+            title: title,
+            author: author
+        }
+        http.post('/movies', json)
+            .then((response) => (window.location.href = "/"));
     }
 
     return (
