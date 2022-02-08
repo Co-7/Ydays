@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import http from "../../../utils/http-common";
 import MovieBlock from "../../../components/movies/MovieBlock";
 
 function Movies() {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        const requestOptions = {
-            method: "GET",
-        };
-        fetch("https://api.fmv.medianova.xyz/api/movies", requestOptions)
+        http.get('/movies')
             .then(function (a) {
                 return a.json(); // call the json method on the response to get JSON
             })
