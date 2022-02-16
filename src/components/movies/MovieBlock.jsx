@@ -7,6 +7,7 @@ function MovieBlock(props) {
         <div className="blockp">
             <Link className="block_project" to={`/movies/${props.id}`}>
                 <span className="title">{props.title}</span>
+                <img src={props.poster} alt={props.poster} />
                 <span className="author">{props.author}</span>
             </Link>
             <Link className="update_project" to={`/movies/${props.id}/update`}>
