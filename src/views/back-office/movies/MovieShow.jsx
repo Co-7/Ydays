@@ -35,7 +35,7 @@ function MovieShow() {
                 -1
             ],
             childId: [
-                0, 1
+                "", ""
             ],
             status: "string",
             url: "string",
