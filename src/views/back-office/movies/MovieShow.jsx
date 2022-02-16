@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import http from "../../../utils/http-common";
 import SceneBlock from "../../../components/movies/SceneBlock";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MovieShow() {
     let {id} = useParams();
@@ -47,9 +49,10 @@ function MovieShow() {
 
     return (
         <div>
+            <ToastContainer />
             <div className="list_scene">
                 {scenes.map((element) => {
-                    return <SceneBlock idMovie={id} create={element.create} key={element.id} id={element.id}
+                    return <SceneBlock key={element.id} idMovie={id} all_scene={scenes} create={element.create} id={element.id}
                                        name={element.name} childTwo={element.childId[1]} choiceTwo={element.choices[1]}
                                        childOne={element.childId[0]} choiceOne={element.choices[0]}
                                        question={element.question} clip_url={element.url} status={element.status}/>;
