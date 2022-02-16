@@ -1,4 +1,4 @@
-<img alt="logo" title="logo" src="src/assets/images/logo.png" height="200px" align="center"/>
+<img alt="logo" title="logo" src="src/assets/images/logo.png" height="100px" align="center"/>
 
 # Mov'interact
 Mov'interact, la plateforme de film interactive du projet FMV Jeux vidéos - MediaNova.
@@ -24,7 +24,13 @@ et que des utilisateurs puissent regarder, partager et apprécier ces films.
 `![Writing](https://unsplash.com/photos/VBPzRgd7gfc)`
 
 ## Setup
-You can run:
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.
+
+Installation:
+
+`npm install` or `yarn install`
+
+Start the app:
 
 ```bash
 yarn start 
@@ -66,10 +72,12 @@ Open the Electron window w/ DeveloperTools
 Mov'interact is still in progress. `Version 2` will be out soon.
 
 ## Credits
-List of contriubutors:
-- [John Doe](johndoe.com)
-- [Beginners guide to BEM](link-goes-here.com)
+List of contributors:
+- [Louise Baulan](https://gitlab.com/fayah)
+- [Colin Varange](https://gitlab.com/Co-7)
+- [Gianni Scantamburlo](https://gitlab.com/XDayonline)
+- [Nicolas Notararigo](https://gitlab.com/neerfix)
 
 ## License
 
-MIT license @ [author](author.com)
+MIT license
