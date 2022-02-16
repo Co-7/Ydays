@@ -9,11 +9,10 @@ function Movies() {
     useEffect(() => {
         http.get('/movies')
             .then(function (a) {
-                return a.json(); // call the json method on the response to get JSON
+                return a; // call the json method on the response to get JSON
             })
             .then(function (json) {
-                console.log(json["hydra:member"]);
-                setMovies(json["hydra:member"]);
+                setMovies(json.data["hydra:member"]);
             });
     }, []);
 
