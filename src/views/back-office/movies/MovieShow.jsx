@@ -11,7 +11,7 @@ function MovieShow() {
     useEffect(() => {
         http.get(`/movies/${id}`)
             .then(function (a) {
-                return a.json(); // call the json method on the response to get JSON
+                return a.data; // call the json method on the response to get JSON
             })
             .then(function (json) {
                 setScenes(json.videos)

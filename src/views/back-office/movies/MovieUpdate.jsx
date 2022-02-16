@@ -10,7 +10,8 @@ function MovieUpdate() {
     useEffect(() => {
         http.get(`/movies/${id}`)
             .then(function (a) {
-                return a.json(); // call the json method on the response to get JSON
+                console.log(a)
+                return a.data; // call the json method on the response to get JSON
             })
             .then(function (json) {
                 setTitle(json.title);
