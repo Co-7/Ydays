@@ -5,11 +5,13 @@ import http from "../../../utils/http-common";
 function MovieCreate() {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
+    const [poster, setPoster] = useState("");
 
     function createMovie(e) {
         const json = {
             title: title,
-            author: author
+            author: author,
+            poster: poster
         }
         http.post('/movies', json)
             .then((response) => (window.location.href = "/"));
@@ -23,6 +25,9 @@ function MovieCreate() {
 
                 <label>Nom de l'auteur :</label>
                 <input placeholder="Paul Richard" type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
+
+                <label>Cover du Film (Format 9:16) :</label>
+                <input placeholder="Paul Richard" type="text" value={poster} onChange={(e) => setPoster(e.target.value)} />
 
                 <span onClick={createMovie} className="btn_create">
                     Crée le Projet

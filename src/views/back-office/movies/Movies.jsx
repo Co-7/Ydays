@@ -20,7 +20,7 @@ function Movies() {
         <div>
             <div className="list_project">
                 {movies.map((element) => {
-                    return <MovieBlock key={element.id} title={element.title} author={element.author} id={element.id} />;
+                    return <MovieBlock key={element.id} title={element.title} poster={element.poster} author={element.author} id={element.id} />;
                 })}
                 <Link className="block_project _add" to="/movies/create">
                     +

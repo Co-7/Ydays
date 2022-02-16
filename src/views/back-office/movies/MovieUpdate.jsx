@@ -6,6 +6,7 @@ function MovieUpdate() {
     let {id} = useParams();
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
+    const [poster, setPoster] = useState("");
 
     useEffect(() => {
         http.get(`/movies/${id}`)
@@ -16,6 +17,7 @@ function MovieUpdate() {
             .then(function (json) {
                 setTitle(json.title);
                 setAuthor(json.author);
+                setPoster(json.poster);
             });
     }, [id]);
 
@@ -24,7 +26,8 @@ function MovieUpdate() {
 
         const json = {
             title: title,
-            author: author
+            author: author,
+            poster: poster
         }
 
         http.put(`/movies/${id}`, json)
@@ -41,6 +44,10 @@ function MovieUpdate() {
                 <label>Nom de l'auteur :</label>
                 <input placeholder="Paul Richard" type="text" value={author}
                        onChange={(e) => setAuthor(e.target.value)}/>
+
+                <label>Cover du Film (Format 9:16) :</label>
+                <input placeholder="Lien d'image" type="text" value={poster}
+                       onChange={(e) => setPoster(e.target.value)}/>
 
                 <span onClick={updateMovie} className="btn_create">
                   Mettre à jour le Projet
