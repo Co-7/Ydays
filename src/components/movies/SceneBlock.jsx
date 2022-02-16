@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import http from "../../utils/http-common";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "../../assets/styles/components/movies/SceneBlock.scss";
 
 function SceneBlock(props) {
@@ -10,30 +13,27 @@ function SceneBlock(props) {
     const [choiceTwo, setChoiceTwo] = useState(props.choiceTwo);
     const [childOne, setChildOne] = useState(props.childOne);
     const [childTwo, setChildTwo] = useState(props.childTwo);
+    const [allScene, setAllScene] = useState(props.all_scene);
 
     function updateScene(e) {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Access-Control-Allow-Origin", "*");
-        const requestOptions = {
-            method: "PUT",
-            headers: myHeaders,
-            body: JSON.stringify({ url: url, question: question, choices: [choiceOne, choiceTwo], childId: [childOne, childTwo] }),
-        };
-
-        fetch("https://api.fmv.medianova.xyz/api/videos/" + props.id, requestOptions).then();
+        const data = JSON.stringify({ url: url, question: question, choices: [choiceOne, choiceTwo], childId: [childOne, childTwo] })
+        
+        http.put(`/videos/` + props.id, data)
+            .then((function(response) {
+                if(response.status === 200) {
+                    toast("Scène mise à jour");
+                }
+            }));
     }
     function createScene(e) {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Access-Control-Allow-Origin", "*");
-        const requestOptions = {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify({ url: url, question: question, choices: [choiceOne, choiceTwo], childId: [childOne, childTwo], movie: "/api/movies/" + props.idMovie }),
-        };
-
-        fetch("https://api.fmv.medianova.xyz/api/videos", requestOptions).then();
+        const data = JSON.stringify({ url: url, question: question, choices: [choiceOne, choiceTwo], childId: [childOne, childTwo], movie: "/api/movies/" + props.idMovie })
+        
+        http.post(`/videos`, data)
+            .then((function(response) {
+                if(response.status === 200) {
+                    toast("Scène crée");
+                }
+            }));
     }
 
     return (
@@ -55,13 +55,22 @@ function SceneBlock(props) {
                     </div>
                 </div>
                 <div>
-                    <div>
+                    <div className="choice_block">
                         <label htmlFor="choice_1">Clip après choix 1 :</label>
-                        <input className="_1" type="text" placeholder="Clip suivant #" value={childOne} onChange={(e) => setChildOne(e.target.value)} />
+                        <select defaultValue={childOne} onChange={(e) => setChildOne(e.target.value)} name="" id="">
+                            {allScene.map((element) => {
+                                return props.id !== element.id ? <option value={element.id}>{element.id}</option> : '';
+                            })}
+                        </select>
                     </div>
-                    <div>
+                    <div className="choice_block">
                         <label htmlFor="choice_2">Clip après choix 2 :</label>
-                        <input className="_2" type="text" placeholder="Clip suivant #" value={childTwo} onChange={(e) => setChildTwo(e.target.value)} />
+                        {/* <input className="_2" type="text" placeholder="Clip suivant #" value={childTwo} onChange={(e) => setChildTwo(e.target.value)} /> */}
+                        <select defaultValue={childTwo} onChange={(e) => setChildTwo(e.target.value)} name="" id="">
+                            {allScene.map((element) => {
+                                return props.id !== element.id ? <option value={element.id}>{element.id}</option> : '';
+                            })}
+                        </select>
                     </div>
                 </div>
             </div>
