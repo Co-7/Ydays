@@ -1,6 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import "../../assets/styles/views/Backoffice.scss";
+import Navbar from '../../components/common/Navbar';
 
 import Movies from "./movies/Movies";
 import MovieShow from "./movies/MovieShow";
@@ -11,6 +12,7 @@ import MovieDelete from "./movies/MovieDelete";
 export default function BackOfficeRoutes() {
     return(
         <Router>
+            <Navbar/>
             <Routes>
                 <Route path="/" element={<Movies />} />
 
