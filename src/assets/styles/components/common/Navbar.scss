@@ -8,6 +8,13 @@
     color: white;
     margin-bottom: 40px;
 
+    a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+    }
+
     h1 {
         font-size: 18px;
         text-transform: uppercase;
