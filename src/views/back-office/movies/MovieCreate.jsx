@@ -14,7 +14,7 @@ function MovieCreate() {
             poster: poster
         }
         http.post('/movies', json)
-            .then((response) => (window.location.href = "/"));
+            .then((response) => (window.location.href = "/backoffice"));
     }
 
     return (
