@@ -22,7 +22,7 @@ function Movies() {
                 {movies.map((element) => {
                     return <MovieBlock key={element.id} title={element.title} poster={element.poster} author={element.author} id={element.id} />;
                 })}
-                <Link className="block_project _add" to="/movies/create">
+                <Link className="block_project _add" to="/backoffice/movies/create">
                     +
                 </Link>
             </div>

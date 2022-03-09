@@ -14,12 +14,12 @@ export default function BackOfficeRoutes() {
         <Router>
             <Navbar/>
             <Routes>
-                <Route path="/" element={<Movies />} />
+                <Route path="/backoffice" element={<Movies />} />
 
-                <Route path="/movies/:id" element={<MovieShow />} />
-                <Route path="/movies/create" element={<MovieCreate />} />
-                <Route path="/movies/:id/update" element={<MovieUpdate />} />
-                <Route path="/movies/:id/delete" element={<MovieDelete />} />
+                <Route path="/backoffice/movies/:id" element={<MovieShow />} />
+                <Route path="/backoffice/movies/create" element={<MovieCreate />} />
+                <Route path="/backoffice/movies/:id/update" element={<MovieUpdate />} />
+                <Route path="/backoffice/movies/:id/delete" element={<MovieDelete />} />
             </Routes>
         </Router>
     );
