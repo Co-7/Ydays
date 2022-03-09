@@ -32,7 +32,7 @@ function MovieCreate() {
                 <span onClick={createMovie} className="btn_create">
                     Crée le Projet
                 </span>
-                <Link className="btn_back" to="/">
+                <Link className="btn_back" to="/backoffice">
                     Retour
                 </Link>
             </div>

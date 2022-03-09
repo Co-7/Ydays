@@ -6,10 +6,14 @@ import "../../assets/styles/components/common/Navbar.scss";
 function Navbar() {
     return (
         <nav id="navbar">
-            <Link to="/">
+            <Link className="logo_name" to="/">
                 <img id="logo" src={Logo} alt="Logo"/>
                 <h1>Mov'interact</h1>
             </Link>
+            <Link className="backoffice_nav" to="/backoffice">
+                <span className="backoffice_nav">BackOffice</span>
+            </Link>
+            
         </nav>
     );
 }

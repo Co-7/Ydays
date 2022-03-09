@@ -52,7 +52,7 @@ function MovieUpdate() {
                 <span onClick={updateMovie} className="btn_create">
                   Mettre à jour le Projet
                 </span>
-                <Link className="btn_back" to="/">
+                <Link className="btn_back" to="/backoffice">
                     Retour
                 </Link>
             </div>
