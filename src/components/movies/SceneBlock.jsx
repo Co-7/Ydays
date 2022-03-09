@@ -39,7 +39,7 @@ function SceneBlock(props) {
         
         http.post(`/videos`, data)
             .then((function(response) {
-                if(response.status === 200) {
+                if(response.status === 201) {
                     toast("Scène crée");
                     window.location.reload();
                 }
