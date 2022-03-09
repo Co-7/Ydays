@@ -31,7 +31,7 @@ function MovieUpdate() {
         }
 
         http.put(`/movies/${id}`, json)
-            .then((response) => (window.location.href = "/"));
+            .then((response) => (window.location.href = "/backoffice"));
     }
 
     return (
