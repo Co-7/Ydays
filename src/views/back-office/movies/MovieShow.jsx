@@ -50,6 +50,7 @@ function MovieShow() {
     return (
         <div>
             <ToastContainer />
+            <p className="warning">Attention, vous ne pouvez sauvegarder qu'un seul élément à la fois et les autres changements seront perdus.</p>
             <div className="list_scene">
                 {scenes.map((element) => {
                     return <SceneBlock key={element.id} idMovie={id} all_scene={scenes} create={element.create} id={element.id}
