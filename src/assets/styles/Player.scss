@@ -1,0 +1,22 @@
+#Player {
+  .player-choice {
+    padding: 5em;
+    background: #41008e;
+    color: white;
+    border: 0;
+    border-radius: 33px;
+    font-size: large;
+    font-family: 'Montserrat';
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    top: 50%;
+    z-index: 100;
+    transition: 0.1s;
+  }
+  .player-choice:hover{
+    background: #370076;
+    padding: 5.2em;
+  }
+}
