@@ -1,0 +1,85 @@
+$primary : #16181c;
+$secondary : #282c34;
+$hover : #202124;
+
+.block_project {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 280px;
+    padding: 20px;
+    background: $primary;
+    margin: 0 10px 0px 10px;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #e0e0e0;
+    box-shadow: 1px 1px 8px 0px #0000002e;
+    border-radius: 10px 10px 0 0;
+
+    .title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .author {
+        margin-top: auto;
+        font-style: italic;
+        font-size: 14px;
+    }
+
+    img {
+        margin: 12px;
+        height: 186px;
+        object-fit: contain;
+    }
+
+    &:hover {
+        background: $hover;
+    }
+
+    &._add {
+        text-decoration: none;
+        justify-content: center;
+        font-size: 80px;
+        color: white;
+        height: 208px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+}
+
+.update_project,
+.delete_project {
+    background-color: $primary;
+    width: 200px;
+    margin: 0 10px 0px 10px;
+    display: block;
+    box-sizing: border-box;
+    border-top: 0;
+    font-size: 14px;
+    padding: 6px 0;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    color: #e0e0e0;
+    box-shadow: 1px 1px 8px 0px #0000002e;
+
+    &:hover {
+        background: $hover;
+    }
+}
+
+.update_project {
+    border-top: 1px solid $secondary;
+    border-bottom: 1px solid $secondary;
+}
+
+.delete_project {
+    border-radius: 0 0 10px 10px;
+}
+
+.blockp {
+    margin-bottom: 10px;
+}

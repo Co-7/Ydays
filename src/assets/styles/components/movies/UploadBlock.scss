@@ -1,0 +1,15 @@
+.box_upload {
+    height: 60px;
+    width: 180px;
+    border: 2px solid #C4C4C4;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #C4C4C4;
+    cursor: pointer;
+
+    &:hover {
+        background: #202328;
+    }
+}

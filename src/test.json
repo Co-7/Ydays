@@ -1,0 +1,73 @@
+[{
+    "id": 0,
+    "parent_id": [
+      -1
+    ],
+    "child_id": [
+      {
+        "id": 1,
+        "choice": "Il decroche"
+      },
+      {
+        "id": 2,
+        "choice": "Il ne decroche pas"
+      }
+    ],
+    "question": "Le Telephone sonne, Que faire ?",
+    "status": "start",
+    "clip_url": "youtube.com"
+},
+{
+    "id": 1,
+    "parent_id": [
+      0
+    ],
+    "child_id": [
+      {
+        "id": 3,
+        "choice": "Reponse 1"
+      },
+      {
+        "id": 4,
+        "choice": "Reponse 2"
+      }
+    ],
+    "question": "Question A",
+    "status": "true",
+    "clip_url": "youtube.com"
+},
+{
+    "id": 2,
+    "parent_id": [
+      1
+    ],
+    "child_id": [
+      {
+        "id": 1,
+        "choice": false
+      }
+    ],
+    "question": "",
+    "status": "false",
+    "clip_url": "youtube.com"
+},
+{
+    "id": 3,
+    "parent_id": [
+      1
+    ],
+    "child_id": [],
+    "question": "",
+    "status": "false",
+    "clip_url": "youtube.com"
+},
+{
+  "id": 4,
+  "parent_id": [
+    1
+  ],
+  "child_id": [],
+  "question": "",
+  "status": "false",
+  "clip_url": "youtube.com"
+}]
