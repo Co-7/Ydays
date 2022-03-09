@@ -59,7 +59,7 @@ function SceneBlock(props) {
         
         http.delete(`/videos/` + props.id)
             .then((function(response) {
-                if(response.status === 200) {
+                if(response.status === 204) {
                     toast("Scène delete");
                     window.location.reload();
                 }
