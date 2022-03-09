@@ -88,22 +88,19 @@
         margin: 0 20px 20px 0;
         // margin: 0 0 20px 0;
 
-        #identifiant {
-            font-size: 12px;
-            opacity: 0.3;
-            margin-bottom: 10px;
+        .top_cont {
+            display: flex;
+            align-items: center;
+
+            #identifiant {
+                font-size: 12px;
+                opacity: 0.3;
+                margin-bottom: 10px;
+            }
+
+            .save_status {
+                margin-left: auto;
+            }
         }
-
-        // &.start, &.end {
-        //     margin: auto;
-        // }
-
-        // &.false {
-        //     margin-left: auto;
-        // }
-
-        // &.true {
-        //     margin-right: auto;
-        // }
     }
 }

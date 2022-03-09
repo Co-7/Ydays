@@ -3,6 +3,7 @@ import http from "../../utils/http-common";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../../assets/styles/components/movies/SceneBlock.scss";
+import SyncProblem from '../../assets/icons/sync_problem.svg';
 
 function SceneBlock(props) {
     // const [checked, setChecked] = useState(props.status === 'true');
@@ -14,6 +15,7 @@ function SceneBlock(props) {
     const [childOne, setChildOne] = useState(props.childOne);
     const [childTwo, setChildTwo] = useState(props.childTwo);
     const [allScene, setAllScene] = useState(props.all_scene);
+    const [isSave, setIsSave] = useState(props.create !== true);
 
     function updateScene(e, override_id = false, override_data = {}) {
         var id = props.id;
@@ -64,9 +66,18 @@ function SceneBlock(props) {
             }));
     }
 
+    function onChangeScene(e) {
+        setIsSave(false)
+    }
+
     return (
-        <div className={"project " + props.status}>
-            <span id="identifiant">#{props.id}</span>
+        <div onChange={onChangeScene} className={"project " + props.status}>
+            <div className="top_cont">
+                <span id="identifiant">#{props.id}</span>
+                {!isSave &&        
+                    <span className="save_status"><img src={SyncProblem} alt="" /></span>
+                }
+            </div>
             <label htmlFor="url">URL Youtube</label>
             <input id="url" type="text" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" value={url} onChange={(e) => setUrl(e.target.value)} />
             <label htmlFor="question">Question :</label>
