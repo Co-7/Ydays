@@ -1,0 +1,24 @@
+.moviePage{
+  background-color: #131313;
+  height: 100%;
+  width: 100%;
+
+
+}
+.searchBar{
+  width: 30%;
+  border-radius: 25px;
+  background-color: rgb(100, 51, 141);
+  margin: 40px 35% 0 35%;
+}
+.search{
+  width: 80%;
+  background-color: rgb(100, 51, 141);
+  border: none;
+}
+::placeholder{
+   color: white;
+ }
+.movie1{
+  padding: 40px;
+}

@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from "../../components/common/Header";
 
-function FavPage() {
+function HomePage() {
     return (
         <>
-
+            <Header/>
         </>
     );
 }
 
-export default FavPage;
+export default HomePage;
