@@ -49,6 +49,10 @@ function PlayerVideo(props) {
                         <button className="player-choice" style={{left: "40vw", right: 0}} onClick={test}>NON</button>
                     </a>
                 </div>
+                {/*<div>
+                    <button className="player-choice _right"><span className="text">Oui</span></button>
+                    <button className="player-choice _left"><span className="text">Non</span></button>
+                </div>*/}
                 <Player
                     autoplay
                     aspectRatio="20:9"
