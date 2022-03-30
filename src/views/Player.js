@@ -34,10 +34,6 @@ function PlayerVideo(props) {
         console.log("TEST");
     };
 
-    function test() {
-        console.log(duration);
-    }
-
     return (
         <div id="Player">
             <div style={{height: '100%', margin: 'auto'}}>
@@ -46,13 +42,9 @@ function PlayerVideo(props) {
                         <button className="player-choice" style={{right: "40vw", left: 0}}>OUI</button>
                     </a>
                     <a>
-                        <button className="player-choice" style={{left: "40vw", right: 0}} onClick={test}>NON</button>
+                        <button className="player-choice" style={{left: "40vw", right: 0}} onClick={''}>NON</button>
                     </a>
                 </div>
-                {/*<div>
-                    <button className="player-choice _right"><span className="text">Oui</span></button>
-                    <button className="player-choice _left"><span className="text">Non</span></button>
-                </div>*/}
                 <Player
                     autoplay
                     aspectRatio="20:9"
@@ -62,18 +54,6 @@ function PlayerVideo(props) {
                     duration={duration}
                 >
                     <Youtube videoId="DelpERpyqFc"/>
-
-                    {/*<Embed id="vm-iframe-2" embedSrc="https://www.youtube.com/embed/DelpERpyqFc"*/}
-                    {/*       params={{autoplay: 0, muted: 1, controls: 1, rel: 0, height: '92vh'}}*/}
-                    {/*       origin="https://youtu.be/DelpERpyqFc"*/}
-                    {/*       style={{height: '92vh'}}>*/}
-                    {/*    /!*<iframe id="vm-iframe-2" className="lazy" title=""*/}
-                    {/*            allow="autoplay; encrypted-media; picture-in-picture;"*/}
-                    {/*            data-src="https://www.youtube-nocookie.com/embed/DelpERpyqFc?enablejsapi=1&amp;cc_lang_pref=en&amp;hl=en&amp;fs=1&amp;controls=0&amp;disablekb=1&amp;iv_load_policy=3&amp;mute=0&amp;playsinline=0&amp;autoplay=0"*/}
-                    {/*            src="https://www.youtube-nocookie.com/embed/DelpERpyqFc?enablejsapi=1&amp;cc_lang_pref=en&amp;hl=en&amp;fs=1&amp;controls=0&amp;disablekb=1&amp;iv_load_policy=3&amp;mute=0&amp;playsinline=0&amp;autoplay=0"/>*!/*/}
-                    {/*</Embed>*/}
-
-                    {/*<DefaultUi noDblClickFullscreen/>*/}
                     <Ui>
                         <ClickToPlay/>
                         <Captions/>
