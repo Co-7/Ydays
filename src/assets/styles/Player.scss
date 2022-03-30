@@ -1,22 +1,28 @@
 #Player {
   .player-choice {
-    padding: 5em;
-    background: #41008e;
+    padding: 0.5em;
+    width: 8em;
+    height: 8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(153deg, #020024 0%, #41008e 35%, #e200ff 100%);
     color: white;
     border: 0;
-    border-radius: 33px;
-    font-size: large;
-    font-family: 'Montserrat';
+    border-radius: 44px;
+    font-size: 1.5em;
+    font-family: "Montserrat";
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    width: 100px;
     top: 50%;
     z-index: 100;
-    transition: 0.1s;
+    transition: 0.2s;
+    box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
   }
-  .player-choice:hover{
-    background: #370076;
-    padding: 5.2em;
+
+  .player-choice:hover {
+    transform: scale(1.2);
+    background: linear-gradient(153deg, rgba(2, 0, 36, 1) 0%, rgba(65, 0, 142, 1) 54%, rgba(226, 0, 255, 1) 100%);
   }
 }
