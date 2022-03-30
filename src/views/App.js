@@ -22,7 +22,7 @@ function App() {
                     <Route path="/" element={<Landing />} />
                     <Route path="/login" element={<Login setToken={setToken} />} />
                     <Route path="/register" element={<Register />}/>
-                    <Route path="/player" element={<PlayerVideo/>}/>
+                    <Route path="/player/:id" element={<PlayerVideo/>}/>
                 </Routes>
             </Router>
         )

@@ -21,11 +21,13 @@ import {
     PlaybackControl,
     VolumeControl, TimeProgress, ControlSpacer, CaptionControl, PipControl, SettingsControl, FullscreenControl, Embed
 } from '@vime/react';
-import React, {useState, useRef} from 'react';
-
+import React, {useState, useRef, useEffect} from 'react';
+import { useParams } from "react-router-dom";
+import http from "../utils/http-common";
 
 // const Player = () => (
 function PlayerVideo(props) {
+    let {id} = useParams();
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState();
 
@@ -33,6 +35,14 @@ function PlayerVideo(props) {
         setCurrentTime(event.detail);
         console.log("TEST");
     };
+
+    useEffect(() => {
+        http.get(`/movies/${id}`)
+            .then(function (a) {
+                console.log(a);
+                //return a.data;
+            })
+    }, [id]);
 
     return (
         <div id="Player">
@@ -42,7 +52,7 @@ function PlayerVideo(props) {
                         <button className="player-choice" style={{right: "40vw", left: 0}}>OUI</button>
                     </a>
                     <a>
-                        <button className="player-choice" style={{left: "40vw", right: 0}} onClick={''}>NON</button>
+                        <button className="player-choice" style={{left: "40vw", right: 0}}>NON</button>
                     </a>
                 </div>
                 <Player
