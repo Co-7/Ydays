@@ -1,0 +1,39 @@
+#root{
+  height: 100%;
+}
+.container{
+  height: 100%;
+}
+.containerHomePage{
+  background-image: url("../../images/bandersnatch.webp");
+  background-size: cover;
+  height: 100%;
+}
+.watchBox{
+  width: 21%;
+  height: 80%;
+  background-color: rgba(84, 41, 120, 0.6);
+  position: relative;
+  padding: 80px;
+}
+.favicon{
+  padding-left: 100%;
+}
+.movie{
+  font-size: 70px;
+  font-weight: 800;
+}
+.playButton{
+  height: 28px;
+  padding-top: 4px;
+  border: none;
+  border-radius: 25px;
+  background-color: rgb(100, 51, 141);
+}
+.te{
+  padding-right: 5px;
+}
+.play{
+  color: white;
+  font-size: 18px;
+}
