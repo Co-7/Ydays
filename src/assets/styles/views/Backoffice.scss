@@ -1,0 +1,106 @@
+#backoffice {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .p {
+        min-width: 400px;
+        display: flex;
+        flex-direction: column;
+
+        .btn_create {
+            background-color: #3d61a4;
+            border-radius: 6px;
+            padding: 8px 12px;
+            text-align: center;
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .btn_back {
+            margin: 10px auto 0 auto;
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+.list_project {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.warning {
+    padding: 0px 50px;
+    color: #d50f0f;
+    font-style: italic;
+}
+
+.list_scene {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 50px;
+
+    #add_scene {
+        background: #16181c;
+        height: 80px;
+        width: 80px;
+        font-size: 78px;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        margin: auto 0 auto 40px;
+        box-shadow: 1px 1px 8px 0px #0000002e;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #acacac;
+    }
+
+    .choice {
+        ._1 {
+            margin-right: 10px;
+        }
+
+        >div {
+            display: flex;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+    }
+
+    .project {
+        width: 365px;
+        display: flex;
+        flex-direction: column;
+        background: #16181c;
+        box-shadow: 1px 1px 8px 0px #0000002e;
+        border-radius: 10px;
+        padding: 12px;
+        margin: 0 20px 20px 0;
+        // margin: 0 0 20px 0;
+
+        .top_cont {
+            display: flex;
+            align-items: center;
+
+            #identifiant {
+                font-size: 12px;
+                opacity: 0.3;
+                margin-bottom: 10px;
+            }
+
+            .save_status {
+                margin-left: auto;
+            }
+        }
+    }
+}
