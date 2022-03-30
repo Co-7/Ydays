@@ -12,8 +12,16 @@ export default function useToken() {
         setToken(accessToken);
     }
 
+    const removeToken = () => {
+        localStorage.removeItem("accessToken");
+        setToken(null);
+        console.info("Logout");
+        console.log(token)
+    }
+
     return {
         setToken: saveToken,
+        removeToken,
         token
     }
 }

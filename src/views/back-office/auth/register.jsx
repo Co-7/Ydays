@@ -17,12 +17,13 @@ function Register() {
             return;
         }
 
+        // todo : handle roles
         http.post('/users', {
             "email": mail,
             "password": password,
             "username": username,
             "avatar": "",
-            "role": "IS_AUTHENTICATED_ANONYMOUSLY"
+            "role": "IS_AUTHENTICATED_FULLY"
         }).then(function (response) {
             if (response.status === 201) {
                 console.log('Registered');

@@ -2,8 +2,10 @@ import React from "react";
 import "../assets/styles/Navbar.scss";
 import Logo from '../assets/images/logo.svg';
 import {Link} from "react-router-dom";
+import useToken from "../utils/use-token";
 
 function Navbar({logged}) {
+    const {removeToken} = useToken();
 
     const PublicLinks = () => (
         <div id={"navbar-links"}>
@@ -21,6 +23,7 @@ function Navbar({logged}) {
             <Link to={"/"}>
                 <p>Backoffice</p>
             </Link>
+            <a href="/" onClick={removeToken}>Logout</a>
         </div>
     )
     

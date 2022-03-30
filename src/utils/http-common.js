@@ -1,11 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "http://localhost:8000/api",
+    baseURL: "https://api.fmv.medianova.xyz/api",
     headers: {
-        "Content-type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        "Content-Type" : "application/json;charset=utf-8"
     }
 })
