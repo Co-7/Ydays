@@ -12,7 +12,6 @@ deploy_staging:
   stage: deploy
   environment: staging
   when: manual
-  needs: [build_dependencies]
   script: 
     - npm install
     - npm run build
@@ -24,7 +23,6 @@ deploy_firebase:
     - main
   stage: deploy
   environment: production
-  needs: [build_dependencies]
   script: 
     - npm install
     - npm run build
