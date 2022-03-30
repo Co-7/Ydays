@@ -8,7 +8,6 @@ import { ReactComponent as SearchSvg } from '../../assets/icons/search.svg'
 function MoviesPage() {
     return (
         <>
-            <Header/>
             <div className="moviePage column">
                 <div className="searchBar row center">
                     <input className="search" placeholder="Rechercher..."/>

@@ -33,6 +33,10 @@ function Header() {
                 </nav>
             </div>
 
+            <Link className="backoffice_nav" to="/backoffice">
+                <span className="backoffice_nav">BackOffice</span>
+            </Link>
+
             <div className="column center infos">
                 <div className="row account">
                     <AccountSvg/>

@@ -1,13 +1,11 @@
 import React from 'react';
-import Header from "../../components/common/Header";
 import { ReactComponent as FavIconSvg } from '../../assets/icons/favIcon.svg'
 import { ReactComponent as PlaySvg } from '../../assets/icons/play.svg'
 import '../../assets/styles/views/HomePage.scss'
 
-function HomePage(props) {
+function HomePage() {
     return (
         <div className="container">
-            <Header/>
             <div className="containerHomePage">
                 <div className="watchBox column">
                     <FavIconSvg className="row favicon"/>
@@ -23,12 +21,9 @@ function HomePage(props) {
                             <PlaySvg className="te" />
                             <span className="play">Lancer la lecture</span>
                         </div>
-
                     </div>
                 </div>
-
             </div>
-
         </div>
     );
 }
