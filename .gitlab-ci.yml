@@ -6,12 +6,28 @@ cache:
   paths:
     - node_modules/
 
-deploy_firebase:
-  only:
-    - main
-  stage: deploy
+build-dependencies:
+  stage: build
   script: 
     - npm install
     - npm run build
     - npm i firebase-tools -g
+
+deploy_staging:
+  only:
+    - branches
+  stage: staging
+  environment: staging
+  when: manual
+  needs: [build-dependencies]
+  script:
+    - firebase hosting:channel:deploy $CI_BUILD_REF_NAME --token $K8S_SECRET_FIREBASE_TOKEN
+
+deploy_firebase:
+  only:
+    - main
+  stage: deploy
+  environment: production
+  needs: [build-dependencies]
+  script:
     - firebase deploy --token $K8S_SECRET_FIREBASE_TOKEN
