@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "../../components/common/Header";
 
-function HomePage() {
+function FavPage() {
     return (
         <>
             <Header/>
@@ -9,4 +9,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default FavPage;
