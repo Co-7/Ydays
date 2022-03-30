@@ -18,8 +18,8 @@ function PlayerVideo(props) {
         <div id="Player">
             <div style={{height: '100%',margin:'auto'}}>
                 <div>
-                    <button class="player-choice" style={{left: "40vw",right: 0}}>OUI</button>
-                    <button class="player-choice" style={{right: "40vw",left: 0}}>NON</button>
+                    <button class="player-choice _right"><span class="text">Oui</span></button>
+                    <button class="player-choice _left"><span class="text">Non</span></button>
                 </div>
                 <Player
                     aspectRatio={"20:9"}
@@ -28,7 +28,7 @@ function PlayerVideo(props) {
                     style={{'--vm-player-theme': '#9900bf'}}
                 >
                     <Youtube videoId="DelpERpyqFc" showFullscreenControl={false}/>
-                    <DefaultUi noDblClickFullscreen/>
+                    <DefaultUi/>
                 </Player>
                 {/*<ReactPlayer url='https://www.youtube.com/watch?v=YIaD-5AnBmw'*/}
                 {/*             width='100%'*/}
