@@ -2,8 +2,8 @@ import React from 'react';
 import logo from '../../assets/images/logo.png'
 import '../../assets/styles/components/common/Header.scss'
 import '../../assets/styles/components/common/tools.scss'
-import { ReactComponent as AccountSvg } from '../../assets/icons/account.svg'
-import { ReactComponent as ArrowDownSvg } from '../../assets/icons/arrowDown.svg'
+// import { ReactComponent as AccountSvg } from '../../assets/icons/account.svg'
+// import { ReactComponent as ArrowDownSvg } from '../../assets/icons/arrowDown.svg'
 import {Link} from "react-router-dom";
 
 function Header() {
@@ -12,7 +12,7 @@ function Header() {
             <div className="redirect row">
                 <Link to="/" className="column center">
                     <div className="row">
-                        <img className="logoHeader" src={logo}/>
+                        <img alt="logo Mov'Interact" className="logoHeader" src={logo}/>
                         <span className="movinteract column center">mov'interact</span>
                     </div>
 
@@ -20,7 +20,7 @@ function Header() {
                 <nav className="movfav">
                     <ul>
                         <li>
-                            <Link to="/movies" classname="moviesIndex">
+                            <Link to="/movies" className="moviesIndex">
                                 Films
                             </Link>
                         </li>

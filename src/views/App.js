@@ -7,15 +7,19 @@ import useToken from "../utils/use-token";
 // = = = = = @pages = = = = = >
 import Login from "./back-office/auth/login";
 import Register from "./back-office/auth/register";
-// = = = = = @components = = = = = >
-import Navbar from '../components/common/Navbar';
-import Landing from "./landing";
+// front
+import HomePage from "./front/HomePage";
+import MoviesPage from "./front/MoviesPage";
+import FavPage from "./front/FavPage";
+// back-office
 import Movies from "./back-office/movies/Movies";
 import MovieShow from "./back-office/movies/MovieShow";
 import MovieCreate from "./back-office/movies/MovieCreate";
 import MovieUpdate from "./back-office/movies/MovieUpdate";
 import MovieDelete from "./back-office/movies/MovieDelete";
+// = = = = = @components = = = = = >
 import Feed from "./feed";
+import Header from "../components/common/Header";
 
 function App() {
     const {token, setToken} = useToken();
@@ -23,19 +27,21 @@ function App() {
     if (!token) {
         return (
             <Router>
-                <Navbar logged={false} />
+                <Header logged={false} />
                 <Routes>
-                    <Route path="/" element={<Landing />} />
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login setToken={setToken} />} />
                     <Route path="/register" element={<Register />}/>
+
+                    <Route exact path="/movies" element={<MoviesPage />} />
+                    <Route exact path="/favourites" element={<FavPage />} />
                 </Routes>
             </Router>
         )
     } else {
-        // todo : add back office routes
         return(
             <Router>
-                <Navbar logged={true} />
+                <Header logged={true} />
                 <Routes>
                     <Route path="/" element={<Feed />} />
 

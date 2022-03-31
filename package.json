@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "src/electron-starter.js",
-  "proxy": "http://localhost:8000/",
+  "proxy" : "https://api.fmv.medianova.xyz/api",
   "homepage": "./",
   "dependencies": {
     "axios": "^0.25.0",
