@@ -40,7 +40,8 @@ function MovieShow() {
             status: "string",
             url: "string",
             movie: "string",
-            create: true
+            create: true,
+            parent: false
         })
 
         setScenes(newArr)
@@ -56,7 +57,7 @@ function MovieShow() {
                     return <SceneBlock key={element.id} idMovie={id} all_scene={scenes} create={element.create} id={element.id}
                                        name={element.name} childTwo={element.childId[1]} choiceTwo={element.choices[1]}
                                        childOne={element.childId[0]} choiceOne={element.choices[0]}
-                                       question={element.question} clip_url={element.url} status={element.status}/>;
+                                       question={element.question} clip_url={element.url} status={element.status} parent={element.parent}/>;
                 })}
                 <div id="add_scene" onClick={addChild}>+</div>
             </div>

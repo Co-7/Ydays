@@ -46,6 +46,7 @@ function App() {
                     <Route path="/backoffice/movies/create" element={<MovieCreate />} />
                     <Route path="/backoffice/movies/:id/update" element={<MovieUpdate />} />
                     <Route path="/backoffice/movies/:id/delete" element={<MovieDelete />} />
+                    <Route path="/player/:id" element={<PlayerVideo/>}/>
                 </Routes>
             </Router>
         )
