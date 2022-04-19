@@ -11,19 +11,24 @@
     border: 0;
     border-radius: 44px;
     font-size: 1.5em;
-    font-family: "Montserrat";
+    font-family: "Montserrat", serif;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
     top: 50%;
     z-index: 100;
     transition: 0.2s;
-    box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+    box-shadow: rgb(0 0 0 / 19%) 0 10px 20px, rgb(0 0 0 / 23%) 0 6px 6px;
   }
 
   .player-choice:hover {
     transform: scale(1.2);
     background: linear-gradient(153deg, rgba(2, 0, 36, 1) 0%, rgba(65, 0, 142, 1) 54%, rgba(226, 0, 255, 1) 100%);
+  }
+
+  .choices{
+    opacity:0;
+    transition: opacity 0.5s linear;
   }
 
   /*.player-choice {
