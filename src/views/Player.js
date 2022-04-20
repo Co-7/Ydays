@@ -28,8 +28,8 @@ import {
 import React, {useState, useRef, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import http from "../utils/http-common";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faRotateRight} from '@fortawesome/free-solid-svg-icons';
 
 function PlayerVideo(props) {
     let {id} = useParams();
@@ -40,6 +40,7 @@ function PlayerVideo(props) {
     const [firstChoice, setFirstChoice] = useState();
     const [secondChild, setSecondChild] = useState();
     const [secondChoice, setSecondChoice] = useState();
+    const [question, setQuestion] = useState('');
     const [ready, setReady] = useState(false);
     const [urlVideo, setUrlVideo] = useState();
     const [player, setPlayer] = useState(false);
@@ -76,16 +77,16 @@ function PlayerVideo(props) {
         if (idVideo !== 'undefined' && idVideo !== null) {
             http.get(`/videos/${idVideo}`)
                 .then(function (a) {
-                    if(a.data.choices.length !== 0) {
+                    if (a.data.choices.length !== 0) {
                         setFirstChild(a.data.childId[0]);
                         setFirstChoice(a.data.choices[0]);
                         setSecondChild(a.data.childId[1]);
                         setSecondChoice(a.data.choices[1]);
-                    }
-                    else{
+                    } else {
                         setGameOver(true);
                     }
-                    setUrlVideo(a.data.url)
+                    setUrlVideo(a.data.url);
+                    setQuestion(a.data.question);
                     setPlayer(true);
                 })
         } else {
@@ -93,17 +94,17 @@ function PlayerVideo(props) {
                 .then(function (a) {
                     a.data.videos.forEach(b => {
                         if (b.parent) {
-                            if(b.choices.length !== 0) {
+                            if (b.choices.length !== 0) {
                                 setFirstChild(b.childId[0]);
                                 setFirstChoice(b.choices[0]);
                                 setSecondChild(b.childId[1]);
                                 setSecondChoice(b.choices[1]);
-                            }
-                            else{
+                            } else {
                                 setGameOver(true);
                             }
                             setIdVideo(b.id);
                             setUrlVideo(b.url);
+                            setQuestion(b.question);
                             setPlayer(true);
                         }
                     })
@@ -114,11 +115,12 @@ function PlayerVideo(props) {
     return (
         <div id="Player">
             <button className="button_reset" onClick={resetAll} title="Recommencer le film dès le début">
-                <FontAwesomeIcon className="icon" icon={faRotateRight} color="purple" size="4x" />
+                <FontAwesomeIcon className="icon" icon={faRotateRight} color="purple" size="4x"/>
             </button>
             <div style={{height: '100%', margin: 'auto'}}>
                 <div className="choices"
                      style={ready && !gameOver && (currentTime >= duration - delayDisplaying) ? {opacity: 1} : {}}>
+                    <div className="question">{question}</div>
                     <button onClick={changeUrl} targetid={firstChild} className="player-choice"
                             style={{right: "40vw", left: 0}}>{firstChoice}</button>
                     <button onClick={changeUrl} targetid={secondChild} className="player-choice"
