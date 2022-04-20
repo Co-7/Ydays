@@ -1,4 +1,5 @@
 import React from "react";
+import jwt_decode from "jwt-decode";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 // = = = = = @style = = = = = >
 import "../assets/styles/views/Backoffice.scss";
@@ -39,6 +40,13 @@ function App() {
             </Router>
         )
     } else {
+        const decodedToken = jwt_decode(token);
+        if (!decodedToken.username) {
+            console.error("No username fetched");
+        } else {
+            localStorage.setItem("username", decodedToken.username);
+        }
+
         return(
             <Router>
                 <Header logged={true} />
