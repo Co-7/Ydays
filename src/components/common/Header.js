@@ -38,8 +38,8 @@ function Header({logged}) {
                         </Menu.Group>
                         <Menu.Divider />
                         <Menu.Group>
-                            <Menu.Item onSelect={() => removeToken()} intent="danger">
-                                Se déconnecter
+                            <Menu.Item>
+                                <a id="logout" href="/" onClick={removeToken}>Se déconnecter</a>
                             </Menu.Item>
                         </Menu.Group>
                     </Menu>
