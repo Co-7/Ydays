@@ -20,10 +20,14 @@ import MovieUpdate from "./back-office/movies/MovieUpdate";
 import MovieDelete from "./back-office/movies/MovieDelete";
 // = = = = = @components = = = = = >
 import Feed from "./feed";
+import HomePage from "./front/HomePage";
 import Header from "../components/common/Header";
 
 function App() {
     const {token, setToken} = useToken();
+    useEffect(()=> {
+
+    }, [])
 
     if (!token) {
         return (
@@ -34,8 +38,6 @@ function App() {
                     <Route path="/login" element={<Login setToken={setToken} />} />
                     <Route path="/register" element={<Register />}/>
 
-                    <Route exact path="/movies" element={<MoviesPage />} />
-                    <Route exact path="/favourites" element={<FavPage />} />
                 </Routes>
             </Router>
         )
@@ -51,7 +53,7 @@ function App() {
             <Router>
                 <Header logged={true} />
                 <Routes>
-                    <Route path="/" element={<Feed />} />
+                    <Route path="/" element={<HomePage />} />
 
                     <Route path="/backoffice" element={<Movies />} />
                     <Route path="/backoffice/movies/:id" element={<MovieShow />} />
