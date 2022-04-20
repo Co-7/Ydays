@@ -6,6 +6,7 @@ import '../../assets/styles/components/common/tools.scss'
 // import { ReactComponent as ArrowDownSvg } from '../../assets/icons/arrowDown.svg'
 import {Link} from "react-router-dom";
 import useToken from "../../utils/use-token";
+import { Popover, Position, Menu, Button } from 'evergreen-ui'
 
 function Header({logged}) {
 
@@ -24,10 +25,28 @@ function Header({logged}) {
 
     const PrivateLinks = () => (
         <div id={"navbar-links"} className="row">
-            <Link to={"/backoffice"}>
-                <p>Backoffice</p>
-            </Link>
-            <a href="/" onClick={removeToken}>Logout</a>
+            <Popover
+                position={Position.BOTTOM_LEFT}
+                content={
+                    <Menu>
+                        <Menu.Group>
+                            <Menu.Item>
+                                <Link to={"/backoffice"}>
+                                <p id="backButton">Backoffice</p>
+                                </Link>
+                            </Menu.Item>
+                        </Menu.Group>
+                        <Menu.Divider />
+                        <Menu.Group>
+                            <Menu.Item onSelect={() => removeToken()} intent="danger">
+                                Se déconnecter
+                            </Menu.Item>
+                        </Menu.Group>
+                    </Menu>
+                }
+            >
+                <Button marginRight={16}>{localStorage.getItem("username")}</Button>
+            </Popover>
         </div>
     )
 

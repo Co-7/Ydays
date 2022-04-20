@@ -4,6 +4,7 @@ import { ReactComponent as PlaySvg } from '../../assets/icons/play.svg'
 import '../../assets/styles/views/HomePage.scss'
 import {ReactComponent as SearchSvg} from "../../assets/icons/search.svg";
 import MovieContainer from "../../components/common/MovieContainer";
+import { SearchInput } from 'evergreen-ui'
 
 function HomePage() {
     return (
@@ -27,8 +28,7 @@ function HomePage() {
             </div>
             <div className="moviePage column">
                 <div className="searchBar row center">
-                    <input className="search" placeholder="Rechercher..."/>
-                    <SearchSvg className="searchSvg"/>
+                    <SearchInput placeholder="Rechercher..."/>
                 </div>
                 <div className="movie1">
                     <MovieContainer/>
