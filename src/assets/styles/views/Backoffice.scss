@@ -1,4 +1,5 @@
 #backoffice {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -28,6 +29,7 @@
 .list_project {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .warning {
