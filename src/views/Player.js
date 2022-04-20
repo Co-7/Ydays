@@ -34,8 +34,14 @@ function PlayerVideo(props) {
     let {id} = useParams();
     const [currentTime, setCurrentTime] = useState(parseFloat(0));
     const [duration, setDuration] = useState(0);
+    const [idVideo, setIdVideo] = useState(localStorage.getItem('video_current'));
+    const [firstChild, setFirstChild] = useState();
+    const [firstChoice, setFirstChoice] = useState();
+    const [secondChild, setSecondChild] = useState();
+    const [secondChoice, setSecondChoice] = useState();
     const [ready, setReady] = useState(false);
-    const [videoId, setVideoId] = useState('k3b11PemcuTrmWvYe0q');
+    const [urlVideo, setUrlVideo] = useState();
+    const [player, setPlayer] = useState(false);
     let delayDisplaying = 20;
 
     const onReady = (event: CustomEvent<number>) => {
@@ -54,52 +60,70 @@ function PlayerVideo(props) {
         }
     };
 
-    function changeUrl() {
-        setVideoId(null);
-        setVideoId('x8a4xfu');
+    function changeUrl(e) {
+        http.get(`/videos/${e.target.getAttribute('targetid')}`)
+        .then(function (a) {
+            localStorage.setItem('video_current', a.data.id);
+            window.location.reload();
+        })
+    }
+
+    function resetAll(e) {
+        localStorage.removeItem('video_current');
+        window.location.reload();
     }
 
     useEffect(() => {
-        http.get(`/movies/${id}`)
+        if(idVideo !== 'undefined' && idVideo !== null) {
+            http.get(`/videos/${idVideo}`)
             .then(function (a) {
-                console.log(a);
-                //return a.data;
+                setFirstChild(a.data.childId[0]);
+                setFirstChoice(a.data.choices[0]);
+                setSecondChild(a.data.childId[1]);
+                setSecondChoice(a.data.choices[1]);
+                setUrlVideo(a.data.url)
+                setPlayer(true);
             })
+        } else {
+            http.get(`/movies/${id}`)
+            .then(function (a) {
+                a.data.videos.forEach(b => {
+                    if(b.parent) {
+                        setIdVideo(b.id);
+                        setFirstChild(b.childId[0]);
+                        setFirstChoice(b.choices[0]);
+                        setSecondChild(b.childId[1]);
+                        setSecondChoice(b.choices[1]);
+                        setUrlVideo(b.url);
+                        setPlayer(true);
+                    }
+                })
+            })
+        }
     }, [id]);
 
     return (
         <div id="Player">
+            <button className="button_reset" onClick={resetAll}>Recommencer du début</button>
             <div style={{height: '100%', margin: 'auto'}}>
-                <div className="choices"
-                     style={ready && (currentTime >= duration - delayDisplaying) ? {opacity: 1} : {}}>
-                    <button className="player-choice" style={{right: "40vw", left: 0}} onClick={changeUrl}>OUI</button>
-                    <button className="player-choice" style={{left: "40vw", right: 0}} onClick={changeUrl}>NON</button>
+                <div className="choices" style={ready && (currentTime >= duration - delayDisplaying) ? {opacity: 1} : {}}>
+                    <a>
+                        <button onClick={changeUrl} targetid={firstChild} className="player-choice" style={{right: "40vw", left: 0}}>{ firstChoice }</button>
+                    </a>
+                    <a>
+                        <button onClick={changeUrl} targetid={secondChild} className="player-choice" style={{left: "40vw", right: 0}}>{ secondChoice }</button>
+                    </a>
                 </div>
-                {/*<div>
-                    <button className="player-choice _right"><span className="text">Oui</span></button>
-                    <button className="player-choice _left"><span className="text">Non</span></button>
-                </div>*/}
-                <Player
+                {player && <Player
                     autoplay
                     aspectRatio="20:9"
                     style={{'--vm-player-theme': '#9900bf'}}
                     currentTime={currentTime}
                     onVmReady={onReady}
                     onVmCurrentTimeChange={onTimeUpdate}
+                    className='test_player'
                 >
-                    {/*<Youtube videoId="DelpERpyqFc"/>*/}
-
-                    {/*<Embed id="vm-iframe-2" embedSrc="https://www.youtube.com/embed/DelpERpyqFc"*/}
-                    {/*       params={{autoplay: 0, muted: 1, controls: 1, rel: 0, height: '92vh'}}*/}
-                    {/*       origin="https://youtu.be/DelpERpyqFc"*/}
-                    {/*       style={{height: '92vh'}}>*/}
-                    {/*    /!*<iframe id="vm-iframe-2" className="lazy" title=""*/}
-                    {/*            allow="autoplay; encrypted-media; picture-in-picture;"*/}
-                    {/*            data-src="https://www.youtube-nocookie.com/embed/DelpERpyqFc?enablejsapi=1&amp;cc_lang_pref=en&amp;hl=en&amp;fs=1&amp;controls=0&amp;disablekb=1&amp;iv_load_policy=3&amp;mute=0&amp;playsinline=0&amp;autoplay=0"*/}
-                    {/*            src="https://www.youtube-nocookie.com/embed/DelpERpyqFc?enablejsapi=1&amp;cc_lang_pref=en&amp;hl=en&amp;fs=1&amp;controls=0&amp;disablekb=1&amp;iv_load_policy=3&amp;mute=0&amp;playsinline=0&amp;autoplay=0"/>*!/*/}
-                    {/*</Embed>*/}
-
-                    <Dailymotion videoId={videoId} showVideoInfo={false}/>
+                    <Dailymotion videoId={urlVideo} showVideoInfo={false}/>
                     <Ui>
                         <ClickToPlay/>
                         <Captions/>
@@ -123,7 +147,7 @@ function PlayerVideo(props) {
                         <DefaultSettings pin="bottomRight"/>
                         <slot/>
                     </Ui>
-                </Player>
+                </Player>}
             </div>
         </div>
     );
