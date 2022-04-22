@@ -5,8 +5,51 @@ import '../../assets/styles/components/common/tools.scss'
 // import { ReactComponent as AccountSvg } from '../../assets/icons/account.svg'
 // import { ReactComponent as ArrowDownSvg } from '../../assets/icons/arrowDown.svg'
 import {Link} from "react-router-dom";
+import useToken from "../../utils/use-token";
+import { Popover, Position, Menu, Button } from 'evergreen-ui'
 
-function Header() {
+function Header({logged}) {
+
+    const {removeToken} = useToken();
+
+    const PublicLinks = () => (
+        <div id={"navbar-links"} className="row">
+            <Link to={"/login"}>
+                <p>Login</p>
+            </Link>
+            <Link to={"/register"}>
+                <p>Register</p>
+            </Link>
+        </div>
+    )
+
+    const PrivateLinks = () => (
+        <div id={"navbar-links"} className="row">
+            <Popover
+                position={Position.BOTTOM_LEFT}
+                content={
+                    <Menu>
+                        <Menu.Group>
+                            <Menu.Item>
+                                <Link to={"/backoffice"}>
+                                <p id="backButton">Backoffice</p>
+                                </Link>
+                            </Menu.Item>
+                        </Menu.Group>
+                        <Menu.Divider />
+                        <Menu.Group>
+                            <Menu.Item>
+                                <a id="logout" href="/" onClick={removeToken}>Se déconnecter</a>
+                            </Menu.Item>
+                        </Menu.Group>
+                    </Menu>
+                }
+            >
+                <Button marginRight={16}>{localStorage.getItem("username")}</Button>
+            </Popover>
+        </div>
+    )
+
     return (
         <div className="containerHeader row">
             <div className="redirect row">
@@ -15,33 +58,18 @@ function Header() {
                         <img alt="logo Mov'Interact" className="logoHeader" src={logo}/>
                         <span className="movinteract column center">mov'interact</span>
                     </div>
-
                 </Link>
-                <nav className="movfav">
-                    <ul>
-                        <li>
-                            <Link to="/movies" className="moviesIndex">
-                                Films
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/favourites">
-                                Favories
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
             </div>
 
-            <Link className="backoffice_nav" to="/backoffice">
-                <span className="backoffice_nav">BackOffice</span>
-            </Link>
+
 
             <div className="column center infos">
                 <div className="row account">
-                    <AccountSvg/>
-                    <span className="column center">Thierry</span>
-                    <ArrowDownSvg/>
+                    {logged ?
+                        <PrivateLinks />
+                        :
+                        <PublicLinks />
+                    }
                 </div>
             </div>
         </div>

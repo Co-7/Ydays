@@ -2,14 +2,16 @@ import React from 'react';
 import { ReactComponent as FavIconSvg } from '../../assets/icons/favIcon.svg'
 import { ReactComponent as PlaySvg } from '../../assets/icons/play.svg'
 import '../../assets/styles/views/HomePage.scss'
+import {ReactComponent as SearchSvg} from "../../assets/icons/search.svg";
+import MovieContainer from "../../components/common/MovieContainer";
+import { SearchInput } from 'evergreen-ui'
 
 function HomePage() {
     return (
         <div className="container">
             <div className="containerHomePage">
                 <div className="watchBox column">
-                    <FavIconSvg className="row favicon"/>
-                    <br/><br/><br/>
+                    <br/>
                     <span className="movie">FILM</span>
                     <br/>
                     <span>Regardez le film interactif<br/>maintenant<br/></span>
@@ -23,6 +25,15 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="moviePage column">
+                <div className="searchBar row center">
+                    <SearchInput placeholder="Rechercher..."/>
+                </div>
+                <div className="movie1">
+                    <MovieContainer/>
+                </div>
+
             </div>
         </div>
     );

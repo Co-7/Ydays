@@ -24,7 +24,6 @@ import Header from "../components/common/Header";
 
 function App() {
     const {token, setToken} = useToken();
-
     if (!token) {
         return (
             <Router>
@@ -33,9 +32,6 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login setToken={setToken} />} />
                     <Route path="/register" element={<Register />}/>
-
-                    <Route exact path="/movies" element={<MoviesPage />} />
-                    <Route exact path="/favourites" element={<FavPage />} />
                 </Routes>
             </Router>
         )
@@ -51,8 +47,8 @@ function App() {
             <Router>
                 <Header logged={true} />
                 <Routes>
-                    <Route path="/" element={<Feed />} />
-
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<Login setToken={setToken} />} />
                     <Route path="/backoffice" element={<Movies />} />
                     <Route path="/backoffice/movies/:id" element={<MovieShow />} />
                     <Route path="/backoffice/movies/create" element={<MovieCreate />} />

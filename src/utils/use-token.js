@@ -17,6 +17,7 @@ export default function useToken() {
         setToken(null);
         console.info("Logout");
         console.log(token)
+
     }
 
     return {

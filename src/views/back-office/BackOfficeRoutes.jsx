@@ -11,8 +11,7 @@ import MovieDelete from "./movies/MovieDelete";
 
 export default function BackOfficeRoutes() {
     return(
-        <Router>
-            <Navbar/>
+        <>
             <Routes>
                 <Route path="/backoffice" element={<Movies />} />
 
@@ -21,6 +20,6 @@ export default function BackOfficeRoutes() {
                 <Route path="/backoffice/movies/:id/update" element={<MovieUpdate />} />
                 <Route path="/backoffice/movies/:id/delete" element={<MovieDelete />} />
             </Routes>
-        </Router>
+        </>
     );
 }
