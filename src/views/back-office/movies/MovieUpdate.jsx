@@ -5,6 +5,7 @@ import {Link, useParams} from "react-router-dom";
 function MovieUpdate() {
     let {id} = useParams();
     const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
     const [author, setAuthor] = useState("");
     const [poster, setPoster] = useState("");
 
@@ -16,6 +17,7 @@ function MovieUpdate() {
             })
             .then(function (json) {
                 setTitle(json.title);
+                setDescription(json.description);
                 setAuthor(json.author);
                 setPoster(json.poster);
             });
@@ -26,6 +28,7 @@ function MovieUpdate() {
 
         const json = {
             title: title,
+            description: description,
             author: author,
             poster: poster
         }
@@ -40,6 +43,9 @@ function MovieUpdate() {
             <div i className="p">
                 <label>Titre du film :</label>
                 <input placeholder="James Bond" type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
+
+                <label>Description :</label>
+                <input placeholder="Film d'action ou il y a .." type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
 
                 <label>Nom de l'auteur :</label>
                 <input placeholder="Paul Richard" type="text" value={author}
