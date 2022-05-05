@@ -60,6 +60,16 @@ function PlayerVideo(props) {
         }
     };
 
+    const onEnded = (event: CustomEvent<number>) => {
+        http.get(`/videos/${idVideo}`)
+            .then(function (a) {
+                if(a.data.question === "") {
+                    localStorage.setItem('video_current', a.data.childId[0]);
+                    window.location.reload();
+                }
+            })
+    };
+
     function changeUrl(e) {
         http.get(`/videos/${e.target.getAttribute('targetid')}`)
             .then(function (a) {
@@ -134,6 +144,7 @@ function PlayerVideo(props) {
                         currentTime={currentTime}
                         onVmReady={onReady}
                         onVmCurrentTimeChange={onTimeUpdate}
+                        onVmPlaybackEnded={onEnded}
                         className='test_player'
                     >
                         <Dailymotion videoId={urlVideo} showVideoInfo={false}/>
