@@ -1,0 +1,53 @@
+.containerMovie{
+    max-width: 300px;
+    max-height: 400px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #1f1f1f;
+}
+.moviePicture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 170px;
+    width: 300px;
+
+    .play-picture {
+        position: absolute;
+        text-align: center;
+        height: 30px;
+        width: 30px;
+        z-index: 1000;
+    }
+
+    img {
+        max-height: 180px;
+        max-width: 300px;
+        object-fit: cover;
+    }
+
+    img:hover {
+        max-height: 180px;
+        max-width: 300px;
+        object-fit: cover;
+        webkit-filter: brightness(75%); /* Chrome, Safari, Opera */
+        filter: brightness(75%);
+    }
+}
+
+.movieInfo{
+    max-width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+
+    h3 {
+        margin: 10px 0 20px 0;
+    }
+
+    span {
+        font-weight: normal;
+    }
+}

@@ -2,16 +2,12 @@ import "../assets/styles/Player.scss";
 import '@vime/core/themes/default.css' ;
 import {
     Player,
-    Youtube,
-    DefaultUi,
-    Provider,
     Ui,
     ClickToPlay,
     Captions,
     Poster,
     Spinner,
     LoadingScreen,
-    DefaultControls,
     DefaultSettings,
     Controls,
     ControlGroup,
@@ -25,7 +21,7 @@ import {
     SettingsControl,
     Dailymotion
 } from '@vime/react';
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import http from "../utils/http-common";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -125,7 +121,7 @@ function PlayerVideo(props) {
     return (
         <div id="Player">
             <button className="button_reset" onClick={resetAll} title="Recommencer le film dès le début">
-                <FontAwesomeIcon className="icon" icon={faRotateRight} color="purple" size="4x"/>
+                <FontAwesomeIcon className="icon" icon={faRotateRight} color="#613F9F" size="4x"/>
             </button>
             <div style={{height: '100%', margin: 'auto'}}>
                 <div className="choices"

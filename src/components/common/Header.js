@@ -2,18 +2,16 @@ import React from 'react';
 import logo from '../../assets/images/logo.png'
 import '../../assets/styles/components/common/Header.scss'
 import '../../assets/styles/components/common/tools.scss'
-// import { ReactComponent as AccountSvg } from '../../assets/icons/account.svg'
-// import { ReactComponent as ArrowDownSvg } from '../../assets/icons/arrowDown.svg'
 import {Link} from "react-router-dom";
 import useToken from "../../utils/use-token";
-import { Popover, Position, Menu, Button } from 'evergreen-ui'
+import { Popover, Position, Menu } from 'evergreen-ui'
 
 function Header({logged}) {
 
     const {removeToken} = useToken();
 
     const PublicLinks = () => (
-        <div id={"navbar-links"} className="row">
+        <div className="navbar-links row">
             <Link to={"/login"}>
                 <p>Login</p>
             </Link>
@@ -24,7 +22,7 @@ function Header({logged}) {
     )
 
     const PrivateLinks = () => (
-        <div id={"navbar-links"} className="row">
+        <div className="navbar-links row">
             <Popover
                 position={Position.BOTTOM_LEFT}
                 content={
@@ -45,7 +43,7 @@ function Header({logged}) {
                     </Menu>
                 }
             >
-                <Button marginRight={16}>{localStorage.getItem("username")}</Button>
+                <button className={"pop-over"} >@ {localStorage.getItem("username")}</button>
             </Popover>
         </div>
     )

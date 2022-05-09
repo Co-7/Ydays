@@ -1,14 +1,14 @@
 #Player {
   .player-choice {
-    padding: 3em 2em;
+    padding: 30px 60px;
     width: min-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(153deg, #020024 0%, #41008e 35%, #e200ff 100%);
+    background: linear-gradient(153deg, rgba(2, 0, 36, 1) 0%, rgba(97, 63, 159, 1) 60%, rgba(77, 43, 139, 1) 100%);
     color: white;
     border: 0;
-    border-radius: 44px;
+    border-radius: 20px;
     font-size: 1.5em;
     font-family: "Montserrat", serif;
     position: absolute;
@@ -19,12 +19,14 @@
     text-transform: uppercase;
     transition: transform linear 80ms, background ease-in 0.5s;
     box-shadow: rgb(0 0 0 / 19%) 0 10px 20px, rgb(0 0 0 / 23%) 0 6px 6px;
+    /*
     text-shadow: rgb(255 255 255) 0px 0px 5px, rgb(255 255 255) 0px 0px 10px, rgb(255 255 255) 0px 0px 15px, rgb(255 45 149) 0px 0px 20px, rgb(255 45 149) 0px 0px 30px, rgb(255 45 149) 0px 0px 40px, rgb(255 45 149) 0px 0px 50px, rgb(255 45 149) 0px 0px 75px;
+    */
   }
 
   .player-choice:hover {
-    transform: scale(1.2);
-    background: linear-gradient(153deg, rgba(2, 0, 36, 1) 0%, rgba(65, 0, 142, 1) 54%, rgba(226, 0, 255, 1) 100%);
+    transform: scale(1.05);
+    background: linear-gradient(153deg, rgba(2, 0, 36, 1) 0%, rgba(97, 63, 159, 1) 54%, rgba(77, 43, 139, 1) 100%);
   }
 
   .choices {
@@ -47,7 +49,10 @@
    --darkreader-inline-color: #e8e6e3;
    --darkreader-inline-bgimage: initial;
    --darkreader-inline-bgcolor: #262a2b; */
+    /*
     text-shadow: rgb(255 255 255) 0px 0px 5px, rgb(255 255 255) 0px 0px 10px, rgb(255 255 255) 0px 0px 15px, rgb(255 45 149) 0px 0px 20px, rgb(255 45 149) 0px 0px 30px, rgb(255 45 149) 0px 0px 40px, rgb(255 45 149) 0px 0px 50px, rgb(255 45 149) 0px 0px 75px;
+    */
+    text-shadow: #000000 0px 0px 10px;
     --darkreader-inline-color: #e8e6e3;
     --darkreader-inline-bgimage: initial;
     --darkreader-inline-bgcolor: #262a2b;

@@ -2,10 +2,35 @@
     background-color: #1f1f1f;
     padding: 8px 40px 8px 40px;
     justify-content: space-between;
+    min-height: 60px;
+}
+
+.navbar-links {
+    a {
+        padding-right: 20px;
+    }
+}
+
+.pop-over {
+    background-color: #613F9F;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    border:none;
+    margin-right:16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.pop-over:hover {
+    background-color: #754FB9;
+    color: white;
+    border:none;
+    margin-right:16px;
 }
 
 .logoHeader {
-    height: 40px;
+    height: 30px;
+    padding-right: 10px;
     aspect-ratio: 1/1;
 }
 .movinteract {

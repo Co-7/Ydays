@@ -5,35 +5,42 @@
   height: 100%;
 }
 .containerHomePage{
-  background-image: url("../../images/bandersnatch.webp");
+  background-image: url("../../images/decadence-thumbnail.JPG");
   background-size: cover;
-  height: 100%;
+  height: calc(100% - 60px);
 }
 .watchBox{
-  width: 21%;
-  height: 80%;
-  background-color: rgba(84, 41, 120, 0.6);
+  width: 22%;
+  height: 82%;
+  background-color: rgba(84, 41, 120, 0.3);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: start;
   padding: 80px;
 }
-.favicon{
-  padding-left: 100%;
+.watchBox span {
+  padding-bottom: 30px;
 }
+
 .movie{
+  padding-top: 80px;
   font-size: 70px;
   font-weight: 800;
 }
+
 .playButton{
-  height: 28px;
-  padding-top: 4px;
+  padding: 10px 20px;
   border: none;
+  color: white;
+  font-weight: bold;
+  font-family: "Montserrat", serif;
   border-radius: 25px;
   background-color: rgb(100, 51, 141);
 }
-.te{
-  padding-right: 5px;
-}
 .play{
+  padding-left: 20px;
   color: white;
   font-size: 18px;
 }

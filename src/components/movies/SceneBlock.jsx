@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import http from "../../utils/http-common";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../../assets/styles/components/movies/SceneBlock.scss";
 import SyncProblem from '../../assets/icons/sync_problem.svg';
@@ -19,8 +19,8 @@ function SceneBlock(props) {
     const [isSave, setIsSave] = useState(props.create !== true);
 
     function updateScene(e, override_id = false, override_data = {}) {
-        var id = props.id;
-        var data = { url: url, question: question, choices: [choiceOne, choiceTwo], childId: [childOne, childTwo] };
+        let id = props.id;
+        let data = { url: url, question: question, choices: [choiceOne, choiceTwo], childId: [childOne, childTwo] };
         if(override_id !== false) {
             id = override_id
             data = {};
