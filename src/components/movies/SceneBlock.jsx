@@ -8,6 +8,7 @@ import SyncProblem from '../../assets/icons/sync_problem.svg';
 function SceneBlock(props) {
     // const [checked, setChecked] = useState(props.status === 'true');
     // const [create, setCreate] = useState(props.create === 'true');
+    const [originalParent, setOriginalParent] = useState(props.parent);
     const [url, setUrl] = useState(props.clip_url);
     const [question, setQuestion] = useState(props.question);
     const [choiceOne, setChoiceOne] = useState(props.choiceOne);
@@ -78,8 +79,12 @@ function SceneBlock(props) {
                     <span className="save_status"><img src={SyncProblem} alt="" /></span>
                 }
             </div>
-            <label htmlFor="url">URL Youtube</label>
-            <input id="url" type="text" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" value={url} onChange={(e) => setUrl(e.target.value)} />
+            <div style={{display: "flex", alignItems: "center", marginBottom: "15px"}}>
+                <label htmlFor="original_parent">Original Parent (One Only) : </label>
+                <input defaultChecked={originalParent} style={{margin: "0 0 0 10px"}} id="original_parent" type="checkbox" />
+            </div>
+            <label htmlFor="url">Code URL Vidéo</label>
+            <input id="url" type="text" placeholder="dQw4w9WgXcQ" value={url} onChange={(e) => setUrl(e.target.value)} />
             <label htmlFor="question">Question :</label>
             <input id="question" type="text" placeholder="Voulez vous decrocher le telephone ?" value={question} onChange={(e) => setQuestion(e.target.value)} />
             <div className="choice">

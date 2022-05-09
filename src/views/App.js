@@ -13,6 +13,7 @@ import Register from "./back-office/auth/register";
 import HomePage from "./front/HomePage";
 import MoviesPage from "./front/MoviesPage";
 import FavPage from "./front/FavPage";
+import PlayerVideo from "./Player";
 // back-office
 import Movies from "./back-office/movies/Movies";
 import MovieShow from "./back-office/movies/MovieShow";
@@ -34,6 +35,7 @@ function App() {
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/login" element={<Login setToken={setToken}/>}/>
                     <Route path="/register" element={<Register/>}/>
+                    <Route path="/player/:id" element={<PlayerVideo/>}/>
                 </Routes>
             </Router>
         )
@@ -63,6 +65,7 @@ function App() {
                     <Route path="/backoffice/movies/create" element={<MovieCreate/>}/>
                     <Route path="/backoffice/movies/:id/update" element={<MovieUpdate/>}/>
                     <Route path="/backoffice/movies/:id/delete" element={<MovieDelete/>}/>
+                    <Route path="/player/:id" element={<PlayerVideo/>}/>
                 </Routes>
             </Router>
         )
